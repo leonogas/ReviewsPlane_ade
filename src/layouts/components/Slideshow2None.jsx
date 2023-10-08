@@ -1,6 +1,6 @@
 "use client";
 
-import "./App.css";
+import "./app.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ProductNone from "./ProductNone";
