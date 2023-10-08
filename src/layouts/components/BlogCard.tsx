@@ -1,3 +1,4 @@
+"use client";
 import config from "@/config/config.json";
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
@@ -6,10 +7,17 @@ import Link from "next/link";
 import { FaRegFolder, FaRegUserCircle } from "react-icons/fa/index.js";
 import ImageFallback from "../helpers/ImageFallback";
 var path = require("path");
+import { useRouter } from "next/navigation";
 
 const BlogCard = ({ data }: { data: Post }) => {
   const { summary_length, blog_folder } = config.settings;
   const { title, image, author, categories, date } = data.frontmatter;
+  const router = useRouter();
+
+  const handleLinkClick = (event: any) => {
+    event.preventDefault();
+    router.push(`/${blog_folder}/${data.slug}`);
+  };
 
   return (
     <div className="bg-body dark:bg-darkmode-body">
@@ -23,7 +31,9 @@ const BlogCard = ({ data }: { data: Post }) => {
         />
       )}
       <h4 className="mb-3">
-        <Link href={`/${blog_folder}/${data.slug}`}>{title}</Link>
+        <a href={`/${blog_folder}/${data.slug}`} onClick={handleLinkClick}>
+          {title}
+        </a>
       </h4>
       <ul className="mb-4">
         <li className="mr-4 inline-block">
@@ -46,12 +56,14 @@ const BlogCard = ({ data }: { data: Post }) => {
       <p className="mb-6">
         {plainify(data.content!.slice(0, Number(summary_length)))}
       </p>
-      <Link
+
+      <a
         className="btn btn-outline-primary btn-sm"
         href={`/${blog_folder}/${data.slug}`}
+        onClick={() => window.location.replace(`/${blog_folder}/${data.slug}`)}
       >
         read more
-      </Link>
+      </a>
     </div>
   );
 };
