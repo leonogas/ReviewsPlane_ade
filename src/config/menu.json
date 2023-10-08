@@ -1,0 +1,26 @@
+{
+  "main": [
+    {
+      "name": "About",
+      "url": "/about"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog"
+    }    
+  ],
+  "footer": [
+    {
+      "name": "Affiliate Disclaimer",
+      "url": "/affiliate-disclaimer"
+    },
+    {
+      "name": "Private Notice",
+      "url": "/private-notice"
+    },
+    {
+      "name": "Site Map",
+      "url": "/site-map"
+    }
+  ]
+}
